@@ -34,7 +34,7 @@ class Settings extends DB
 		parent::__construct($options);
 		$result = parent::queryExec("describe site");
 		$this->table = ($result === false || empty($result)) ? 'settings' : 'site';
-
+var_dump($this->table);
 		$this->setCovers();
 
 		return self::$pdo;
@@ -56,7 +56,7 @@ class Settings extends DB
 	public function getSetting ($options = array())
 	{
 		if (!is_array($options)) {
-			$options = ['setting' => $options];
+			$options = ['name' => $options];
 		}
 		$defaults = array(
 			'section'    => '',
