@@ -124,6 +124,7 @@ class Settings extends DB
 
 	protected function _getFromSites ($options)
 	{
+		var_dump($options);
 		$setting = empty($options['setting']) ? $options['name'] : $options['setting'];
 		$sql = 'SELECT value FROM site ';
 		if (!empty($options['name'])) {
