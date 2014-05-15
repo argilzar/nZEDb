@@ -578,7 +578,7 @@ class DB extends \PDO
 	public function queryOneRow($query)
 	{
 		$rows = $this->query($query);
-
+var_dump($rows);
 		if (!$rows || count($rows) == 0) {
 			$rows = false;
 		}
