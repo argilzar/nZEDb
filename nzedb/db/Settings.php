@@ -55,6 +55,7 @@ class Settings extends DB
 	 */
 	public function getSetting ($options = array())
 	{
+		var_dump($options);
 		if (!is_array($options)) {
 			$options = ['name' => $options];
 		}
