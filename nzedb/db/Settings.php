@@ -32,7 +32,7 @@ class Settings extends DB
 	public function __construct (array $options = array())
 	{
 		parent::__construct($options);
-		$result = parent::exec("describe site", true);
+		$result = parent::exec("describe site", false);
 		$this->table = ($result === false || empty($result)) ? 'settings' : 'site';
 var_dump($this->table);
 		$this->setCovers();
@@ -65,7 +65,6 @@ var_dump($this->table);
 		);
 		$options += $defaults;
 
-var_dump($this->table);
 		if ($this->table == 'settings') {
 			$result = $this->_getFromSettings($options);
 		} else {
