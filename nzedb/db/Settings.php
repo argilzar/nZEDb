@@ -106,6 +106,7 @@ class Settings extends DB
 
 	protected function _getFromSettings ($options)
 	{
+		var_dump($options);
 		$results = array();
 		$sql     = 'SELECT value FROM settings ';
 		$where   = $options['section'] . $options['subsection'] . $options['name']; // Can't use expression in empty() < PHP 5.5
