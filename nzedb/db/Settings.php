@@ -33,6 +33,7 @@ class Settings extends DB
 	{
 		parent::__construct($options);
 		$result = parent::exec("describe site", false);
+var_dump($result);
 		$this->table = ($result === false || empty($result)) ? 'settings' : 'site';
 var_dump($this->table);
 		$this->setCovers();
