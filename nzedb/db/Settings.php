@@ -32,10 +32,8 @@ class Settings extends DB
 	public function __construct (array $options = array())
 	{
 		parent::__construct($options);
-		$result = parent::exec("describe site", false);
-var_dump($result);
-		$this->table = ($result === false || empty($result)) ? 'settings' : 'site';
-var_dump($this->table);
+		$result = parent::exec("describe site", true);
+		$this->table = ($result === false) ? 'settings' : 'site';
 		$this->setCovers();
 
 		return self::$pdo;
