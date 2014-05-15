@@ -66,6 +66,7 @@ var_dump($this->table);
 		);
 		$options += $defaults;
 
+var_dump($this->table);
 		if ($this->table == 'settings') {
 			$result = $this->_getFromSettings($options);
 		} else {
@@ -125,7 +126,9 @@ var_dump($this->table);
 
 	protected function _getFromSites ($options)
 	{
+var_dump($options);
 		$setting = empty($options['setting']) ? $options['name'] : $options['setting'];
+var_dump($setting);
 		$sql = 'SELECT value FROM site ';
 		if (!empty($options['name'])) {
 			$sql .= "WHERE setting = '$setting'";
