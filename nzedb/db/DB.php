@@ -561,6 +561,7 @@ var_dump($result);
 			$result = self::$pdo->query($query);
 		} catch (\PDOException $e) {
 var_dump("Exception during PDO::query($query)");
+var_dump($e);
 			$this->echoError($e->getMessage(), 'queryDirect', 4, false, $e);
 			if ($this->_debug) {
 				$this->debugging->start("queryDirect", $query, 6);
