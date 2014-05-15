@@ -534,6 +534,7 @@ class DB extends \PDO
 		if ($result === false) {
 			return false;
 		}
+var_dump($result);
 
 		$rows = array();
 		foreach ($result as $row) {
@@ -559,6 +560,7 @@ class DB extends \PDO
 		try {
 			$result = self::$pdo->query($query);
 		} catch (\PDOException $e) {
+var_dump("Exception during PDO::query($query)");
 			$this->echoError($e->getMessage(), 'queryDirect', 4, false, $e);
 			if ($this->_debug) {
 				$this->debugging->start("queryDirect", $query, 6);
@@ -578,7 +580,6 @@ class DB extends \PDO
 	public function queryOneRow($query)
 	{
 		$rows = $this->query($query);
-var_dump($rows);
 		if (!$rows || count($rows) == 0) {
 			$rows = false;
 		}
