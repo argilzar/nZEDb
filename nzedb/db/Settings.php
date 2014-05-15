@@ -34,7 +34,7 @@ class Settings extends DB
 		parent::__construct($options);
 		$result = parent::exec("describe site", true);
 		$this->table = ($result === false || empty($result)) ? 'settings' : 'site';
-
+var_dump($this->table);
 		$this->setCovers();
 
 		return self::$pdo;
@@ -55,7 +55,6 @@ class Settings extends DB
 	 */
 	public function getSetting ($options = array())
 	{
-		var_dump($options);
 		if (!is_array($options)) {
 			$options = ['name' => $options];
 		}
@@ -65,6 +64,8 @@ class Settings extends DB
 			'name'       => null,
 		);
 		$options += $defaults;
+
+var_dump($this->table);
 		if ($this->table == 'settings') {
 			$result = $this->_getFromSettings($options);
 		} else {
@@ -106,7 +107,6 @@ class Settings extends DB
 
 	protected function _getFromSettings ($options)
 	{
-		var_dump($options);
 		$results = array();
 		$sql     = 'SELECT value FROM settings ';
 		$where   = $options['section'] . $options['subsection'] . $options['name']; // Can't use expression in empty() < PHP 5.5
@@ -125,7 +125,6 @@ class Settings extends DB
 
 	protected function _getFromSites ($options)
 	{
-		var_dump($options);
 		$setting = empty($options['setting']) ? $options['name'] : $options['setting'];
 		$sql = 'SELECT value FROM site ';
 		if (!empty($options['name'])) {
