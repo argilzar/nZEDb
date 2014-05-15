@@ -130,6 +130,7 @@ class Settings extends DB
 		}
 var_dump($sql);
 		$result = $this->queryOneRow($sql);
+var_dump($result);
 
 		return $result['value'];
 	}
