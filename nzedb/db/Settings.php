@@ -128,7 +128,7 @@ class Settings extends DB
 		if (!empty($setting)) {
 			$sql .= "WHERE setting = '$setting'";
 		}
-
+var_dump($sql);
 		$result = $this->queryOneRow($sql);
 
 		return $result['value'];
