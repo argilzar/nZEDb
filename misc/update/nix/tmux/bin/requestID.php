@@ -51,7 +51,7 @@ if ($bFound === true) {
 			. "preid = %d, reqidstatus = 1, isrenamed = 1, searchname = %s, categoryid = %d where id = %d", $preid, $db->escapeString($title), $determinedcat, $pieces[0]));
 	if ($groupid !== 0) {
 		$md5 = md5($title);
-		$dupe = $db->queryOneRow(sprintf('SELECT requestid FROM predb WHERE md5 = %s', $db->escapeString($md5)));
+		$dupe = $db->queryOneRow(sprintf('SELECT requestid FROM predb INNER JOIN predbhash ON predbhash.pre_id = predb.id WHERE MATCH (predbhash.hashes) AGAINST (%s)', $db->escapeString($md5)));
 		if ($dupe === false || ($dupe !== false && $dupe['requestid'] !== $requestID)) {
 			$db->queryDirect(
 				sprintf("
